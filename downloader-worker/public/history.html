@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Download History</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>Download History</h1>
+
+<table id="tbl">
+<thead>
+<tr>
+<th>Filename</th>
+<th>Size</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+<script>
+
+const token =
+prompt("Admin Token");
+
+fetch(
+  "/history?token=" +
+  encodeURIComponent(token)
+)
+.then(r => r.json())
+.then(rows => {
+
+  const body =
+    document.querySelector(
+      "#tbl tbody"
+    );
+
+  rows.forEach(row => {
+
+    body.innerHTML += `
+      <tr>
+        <td>${row.filename}</td>
+        <td>${row.size}</td>
+        <td>${row.downloaded_at}</td>
+      </tr>
+    `;
+  });
+
+});
+
+</script>
+
+</body>
+</html>
