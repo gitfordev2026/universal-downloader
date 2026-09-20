@@ -1,28 +1,14 @@
 {
-	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "universal-downloader",
-	"main": "src/index.js",
-	"compatibility_date": "2026-09-16",
-	"assets": {
-		"directory": "./public"
-	},
-	"observability": {
-		"enabled": true
-	},
-	"upload_source_maps": true,
-	"kv_namespaces": [
-		{
-			"binding": "DOWNLOADS",
-			"id": "3bd687f4b56e464eb1beedb11decf012",
-			"remote": true
-		}
-	],
-	"d1_databases": [
-		{
-			"binding": "DB",
-			"database_name": "downloads",
-			"database_id": "138dcc4f-a5c4-4616-a305-27811afb682b",
-			"remote": true
-		}
-	]
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "downloader-worker",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-16",
+
+  "assets": {
+    "directory": "./public"
+  },
+
+  "observability": {
+    "enabled": true
+  }
 }
