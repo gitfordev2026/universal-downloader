@@ -121,14 +121,7 @@ async function downloadHandler(request, env) {
       }
     );
 
-  // } catch (err) {
-
-  //   return new Response(
-  //     "Download failed",
-  //     { status: 500 }
-  //   );
-  // }
-  }
+  } 
   catch (err) {
   return new Response(
     JSON.stringify({
