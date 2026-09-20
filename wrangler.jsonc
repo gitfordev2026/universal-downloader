@@ -19,7 +19,7 @@
 	],
 	"d1_databases": [
 		{
-			"binding": "y",
+			"binding": "DB",
 			"database_name": "downloads",
 			"database_id": "138dcc4f-a5c4-4616-a305-27811afb682b",
 			"remote": true

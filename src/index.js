@@ -44,13 +44,21 @@ async function downloadHandler(request, env) {
 
   try {
 
+    // const upstream = await fetch(target, {
+    //   redirect: "follow",
+    //   signal: controller.signal,
+    //   headers: {
+    //     "User-Agent": "UniversalDownloader/1.0"
+    //   }
+    // });
+
     const upstream = await fetch(target, {
-      redirect: "follow",
-      signal: controller.signal,
-      headers: {
-        "User-Agent": "UniversalDownloader/1.0"
-      }
-    });
+    redirect: "follow",
+    headers: {
+      "User-Agent": "Mozilla/5.0",
+      "Accept": "*/*"
+    }
+  });
 
     clearTimeout(timeout);
 
@@ -76,7 +84,7 @@ async function downloadHandler(request, env) {
         10
       );
 
-    env.DB.prepare(`
+    await env.DB.prepare(`
       INSERT INTO downloads
       (
         filename,
