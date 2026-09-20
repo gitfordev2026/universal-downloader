@@ -128,6 +128,7 @@ async function downloadHandler(request, env) {
   //     { status: 500 }
   //   );
   // }
+  }
   catch (err) {
   return new Response(
     JSON.stringify({
