@@ -121,13 +121,27 @@ async function downloadHandler(request, env) {
       }
     );
 
-  } catch (err) {
+  // } catch (err) {
 
-    return new Response(
-      "Download failed",
-      { status: 500 }
-    );
-  }
+  //   return new Response(
+  //     "Download failed",
+  //     { status: 500 }
+  //   );
+  // }
+  catch (err) {
+  return new Response(
+    JSON.stringify({
+      error: err.message,
+      stack: err.stack
+    }),
+    {
+      status: 500,
+      headers: {
+        "content-type": "application/json"
+      }
+    }
+  );
+}
 }
 
 async function historyHandler(request, env) {
