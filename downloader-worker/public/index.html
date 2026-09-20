@@ -3,69 +3,21 @@
 <head>
 <meta charset="utf-8">
 <title>Universal Downloader</title>
-<meta name="viewport"
-      content="width=device-width,initial-scale=1">
-
-<style>
-body{
-max-width:700px;
-margin:auto;
-padding:30px;
-font-family:Arial;
-}
-
-input{
-width:100%;
-padding:12px;
-box-sizing:border-box;
-}
-
-button{
-width:100%;
-padding:12px;
-margin-top:10px;
-cursor:pointer;
-}
-</style>
+<link rel="stylesheet" href="/style.css">
 </head>
-
 <body>
 
 <h1>Universal Downloader</h1>
 
 <input
 id="url"
-placeholder="Paste direct download URL">
+placeholder="Paste direct URL">
 
-<button onclick="downloadFile()">
+<button id="downloadBtn">
 Download
 </button>
 
-<script>
-
-const WORKER =
-"https://YOUR-WORKER.workers.dev";
-
-function downloadFile(){
-
-const url =
-document
-.getElementById("url")
-.value
-.trim();
-
-if(!url){
-alert("Enter URL");
-return;
-}
-
-window.location =
-WORKER +
-"?url=" +
-encodeURIComponent(url);
-
-}
-</script>
+<script src="/app.js"></script>
 
 </body>
 </html>
