@@ -83,26 +83,30 @@ async function downloadHandler(request, env) {
         upstream.headers.get("content-length") || "0",
         10
       );
-
-    await env.DB.prepare(`
-      INSERT INTO downloads
-      (
-        filename,
-        source_url,
-        content_type,
-        size,
-        downloaded_at
-      )
-      VALUES (?, ?, ?, ?, ?)
-    `)
-      .bind(
-        filename,
-        target,
-        contentType,
-        contentLength,
-        new Date().toISOString()
-      )
-      .run();
+      if(env.DB) {
+        try {
+        await env.DB.prepare(`
+          INSERT INTO downloads
+          (
+            filename,
+            source_url,
+            content_type,
+            size,
+            downloaded_at
+          )
+          VALUES (?, ?, ?, ?, ?)
+        `)
+          .bind(
+            filename,
+            target,
+            contentType,
+            contentLength,
+            new Date().toISOString()
+          )
+          .run();
+      } catch (e) {
+    console.log("History logging failed", e);
+  }};
 
     const headers = new Headers();
 
